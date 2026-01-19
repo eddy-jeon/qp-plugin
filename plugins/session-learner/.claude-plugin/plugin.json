@@ -2,7 +2,7 @@
   "name": "session-learner",
   "version": "1.0.0",
   "description": "Claude Code 세션에서 학습 내용을 추출하여 지정된 레포지토리에 저장하는 플러그인",
-  "commands": "${CLAUDE_PLUGIN_ROOT}/commands",
-  "agents": "${CLAUDE_PLUGIN_ROOT}/agents",
-  "hooks": "${CLAUDE_PLUGIN_ROOT}/hooks/hooks.json"
+  "commands": "./commands",
+  "agents": "./agents",
+  "hooks": "./hooks/hooks.json"
 }
