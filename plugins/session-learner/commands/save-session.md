@@ -11,7 +11,7 @@ description: 현재 세션의 학습 내용을 수동으로 저장합니다
 
 ### 1. 설정 파일 확인
 
-`.claude/session-learner.local.md` 파일을 읽어서 `repository_path` 설정을 확인하세요.
+`~/.claude/session-learner.local.md` 파일을 읽어서 `repository_path` 설정을 확인하세요.
 
 설정 파일이 없으면:
 ```

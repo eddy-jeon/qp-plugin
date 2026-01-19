@@ -19,7 +19,7 @@ description: 학습 내용을 저장할 레포지토리 경로를 설정합니�
    - 검증 실패 시 에러 메시지와 함께 다시 입력 요청
 
 3. **설정 파일 생성**
-   - `.claude/session-learner.local.md` 파일 생성
+   - `~/.claude/session-learner.local.md` 파일 생성
    - 파일 형식:
    ```yaml
    ---
