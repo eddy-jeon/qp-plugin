@@ -1,0 +1,37 @@
+{
+  "hooks": [
+    {
+      "matcher": {
+        "event": "SessionStart"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "${CLAUDE_PLUGIN_ROOT}/scripts/load-state.sh"
+        }
+      ]
+    },
+    {
+      "matcher": {
+        "event": "PreCompact"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "${CLAUDE_PLUGIN_ROOT}/scripts/save-checkpoint.sh pre-compact"
+        }
+      ]
+    },
+    {
+      "matcher": {
+        "event": "Stop"
+      },
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "Simple Engineering 상태 확인:\n\n현재 진행 중인 Simple Engineering 작업이 있다면, 상태 파일(.claude/simple-engineering/state.md)을 업데이트해 주세요.\n\n**확인 사항:**\n1. 현재 단계(Research/Plan/Implement)가 완료되었는지\n2. 미검증 체크포인트가 있는지\n3. 다음 세션을 위해 기록할 컨텍스트가 있는지\n\n경고만 표시하고 차단하지 않습니다."
+        }
+      ]
+    }
+  ]
+}

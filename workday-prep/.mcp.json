@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "slack": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp-servers/slack-mcp/index.js"],
+      "env": {
+        "SLACK_CLIENT_ID": "${SLACK_CLIENT_ID}",
+        "SLACK_CLIENT_SECRET": "${SLACK_CLIENT_SECRET}"
+      }
+    },
+    "gsuite": {
+      "command": "npx",
+      "args": ["-y", "mcp-gsuite"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_CLIENT_SECRET}"
+      }
+    },
+    "jira": {
+      "type": "sse",
+      "url": "https://mcp.atlassian.com/v1/sse"
+    }
+  }
+}
