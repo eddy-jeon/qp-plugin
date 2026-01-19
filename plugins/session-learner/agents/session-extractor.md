@@ -2,11 +2,7 @@
 name: session-extractor
 description: 현재 세션의 대화 내용을 분석하여 핵심 학습 내용을 추출하는 에이전트. 세션에서 배운 개념, 해결한 문제, 사용한 기술, 핵심 인사이트를 구조화된 형식으로 정리합니다.
 model: inherit
-tools:
-  - Read
-  - Write
-  - Bash
-  - Grep
+tools: Read, Write, Bash, Grep
 ---
 
 # Session Extractor Agent
