@@ -3,7 +3,5 @@
   "version": "1.0.0",
   "description": "하루 업무 시작 전 여러 플랫폼(Slack, Gmail, Jira, GitHub, Google Calendar)의 알림과 업데이트를 확인하고 인터랙티브하게 처리하는 플러그인",
   "author": "eddy",
-  "commands": "./commands",
-  "skills": "./skills",
   "mcpServers": ".mcp.json"
 }
