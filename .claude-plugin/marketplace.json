@@ -1,0 +1,24 @@
+{
+  "name": "qp-plugin",
+  "owner": {
+    "name": "eddy-jeon"
+  },
+  "plugins": [
+    {
+      "name": "session-learner",
+      "source": "./plugins/session-learner",
+      "description": "Claude Code 세션에서 학습 내용을 자동으로 추출하여 Git 레포지토리에 저장하는 플러그인",
+      "version": "1.0.0"
+    },
+    {
+      "name": "simple-engineering",
+      "source": "./plugins/simple-engineering",
+      "description": "AI 협업 시 Simple Engineering 원칙을 적용하는 3단계 워크플로우 플러그인"
+    },
+    {
+      "name": "workday-prep",
+      "source": "./plugins/workday-prep",
+      "description": "하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림을 확인하는 플러그인"
+    }
+  ]
+}
