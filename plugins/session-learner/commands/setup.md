@@ -19,7 +19,10 @@ description: 학습 내용을 저장할 레포지토리 경로를 설정합니�
    - 검증 실패 시 에러 메시지와 함께 다시 입력 요청
 
 3. **설정 파일 생성**
-   - `~/.claude/session-learner.local.md` 파일 생성
+   - 먼저 Bash로 `echo $HOME`을 실행하여 홈 디렉토리의 절대 경로를 얻으세요
+   - `{홈 디렉토리 절대 경로}/.claude/session-learner.local.md` 파일 생성
+   - 예: `/Users/username/.claude/session-learner.local.md`
+   - `.claude` 디렉토리가 없으면 먼저 생성하세요
    - 파일 형식:
    ```yaml
    ---
