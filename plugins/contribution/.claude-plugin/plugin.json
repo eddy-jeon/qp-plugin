@@ -1,0 +1,9 @@
+{
+  "name": "contribution",
+  "version": "1.0.0",
+  "description": "Conventional Commit 형식의 한글 커밋과 PR 생성을 지원하는 플러그인",
+  "author": {
+    "name": "Eddy Jeon"
+  },
+  "keywords": ["git", "commit", "pr", "conventional-commit", "korean"]
+}
