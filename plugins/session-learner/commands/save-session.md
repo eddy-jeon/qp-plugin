@@ -1,5 +1,5 @@
 ---
-name: save-session
+name: session-learner:save-session
 description: 현재 세션의 학습 내용을 수동으로 저장합니다
 ---
 
@@ -14,14 +14,17 @@ description: 현재 세션의 학습 내용을 수동으로 저장합니다
 먼저 Bash로 `echo $HOME`을 실행하여 홈 디렉토리의 절대 경로를 얻은 후, `{홈 디렉토리}/.claude/session-learner.local.md` 파일을 읽어서 `repository_path` 설정을 확인하세요.
 
 설정 파일이 없으면:
+
 ```
 설정 파일이 없습니다. 먼저 /session-learner:setup 커맨드를 실행하여 레포지토리 경로를 설정해주세요.
 ```
+
 메시지를 출력하고 종료하세요.
 
 ### 2. 레포지토리 경로 검증
 
 설정된 경로가 유효한지 확인:
+
 - 디렉토리 존재 여부
 - git 레포지토리 여부
 
@@ -32,6 +35,7 @@ description: 현재 세션의 학습 내용을 수동으로 저장합니다
 `session-extractor` 에이전트를 Task 도구로 호출하여 현재 세션의 학습 내용을 추출하세요.
 
 프롬프트:
+
 ```
 현재 세션의 대화 내용을 분석하여 학습 기록을 작성해주세요.
 
@@ -57,6 +61,7 @@ git push
 ### 5. 완료 메시지
 
 저장이 완료되면 다음 정보를 출력:
+
 - 저장된 파일 경로
 - 커밋 해시
 - 푸시 성공 여부

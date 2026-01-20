@@ -30,11 +30,13 @@ mkdir -p .claude/simple-engineering/{research,specs,checkpoints}
 다음 영역을 순차적으로 조사합니다:
 
 #### 2.1 현재 상태 파악
+
 - 관련 코드/파일 탐색
 - 기존 구현 분석
 - 의존성 파악
 
 #### 2.2 문제/요구사항 정의
+
 - 해결해야 할 핵심 문제 식별
 - 제약 조건 파악
 - 성공 기준 정의
@@ -63,10 +65,12 @@ mkdir -p .claude/simple-engineering/{research,specs,checkpoints}
 조사 결과를 바탕으로 복잡성을 분석합니다:
 
 #### Essential Complexity (본질적 복잡성)
+
 - 문제 도메인에서 피할 수 없는 복잡성
 - 비즈니스 로직의 고유한 복잡성
 
 #### Accidental Complexity (부수적 복잡성)
+
 - 기술적 선택으로 인해 발생한 복잡성
 - 제거하거나 단순화할 수 있는 부분
 
@@ -82,33 +86,42 @@ mkdir -p .claude/simple-engineering/{research,specs,checkpoints}
 **Status**: completed | in-progress
 
 ## Executive Summary
+
 [2-3문장 요약]
 
 ## Problem Statement
+
 [해결해야 할 문제]
 
 ## Current State Analysis
+
 [현재 상태 분석 결과]
 
 ## Assumptions (Verified)
+
 - [ ] Assumption 1: [내용] - verified/pending/rejected
 - [ ] Assumption 2: [내용] - verified/pending/rejected
 
 ## Complexity Analysis
 
 ### Essential
+
 - [본질적 복잡성 항목]
 
 ### Accidental
+
 - [부수적 복잡성 항목]
 
 ## Key Findings
+
 [핵심 발견 사항]
 
 ## Recommendations
+
 [다음 단계 권장 사항]
 
 ## Checkpoints Log
+
 - cp-001: [가정] - [상태]
 - cp-002: [결정] - [상태]
 ```
@@ -123,7 +136,7 @@ Research Phase 완료!
 산출물: .claude/simple-engineering/research/{task-id}.md
 
 다음 단계로 진행하려면:
-/simple:plan .claude/simple-engineering/research/{task-id}.md
+/simple-engineering:plan .claude/simple-engineering/research/{task-id}.md
 ```
 
 ## 권장 모드 동작
@@ -139,5 +152,6 @@ Research Phase 완료!
 ## 사용할 Agents
 
 필요 시 다음 agent를 활용합니다:
+
 - **verifier**: 체크포인트 관리 및 검증 요청
 - **complexity-analyst**: 복잡성 분석 수행

@@ -1,5 +1,5 @@
 ---
-name: setup
+name: session-learner:setup
 description: 학습 내용을 저장할 레포지토리 경로를 설정합니다
 ---
 
@@ -24,11 +24,11 @@ description: 학습 내용을 저장할 레포지토리 경로를 설정합니�
    - 예: `/Users/username/.claude/session-learner.local.md`
    - `.claude` 디렉토리가 없으면 먼저 생성하세요
    - 파일 형식:
+
    ```yaml
    ---
    repository_path: <사용자가 입력한 경로>
    ---
-
    # Session Learner 설정
 
    이 파일은 session-learner 플러그인의 설정을 저장합니다.

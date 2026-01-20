@@ -18,6 +18,7 @@ arguments:
 ### 1. Research 검토
 
 먼저 제공된 Research 파일을 읽고 분석합니다:
+
 - Problem Statement 확인
 - Verified Assumptions 확인
 - 미검증 가정이 있다면 경고 표시
@@ -50,6 +51,7 @@ arguments:
 다음 항목을 **구체적으로** 명시합니다:
 
 #### 3.1 파일 구조
+
 ```
 변경/생성할 파일:
 - path/to/file1.ts (수정)
@@ -58,6 +60,7 @@ arguments:
 ```
 
 #### 3.2 함수/클래스 시그니처
+
 ```typescript
 // 예시: 정확한 시그니처 명시
 interface UserService {
@@ -67,6 +70,7 @@ interface UserService {
 ```
 
 #### 3.3 데이터 구조
+
 ```typescript
 // 예시: 정확한 타입 정의
 type User = {
@@ -77,11 +81,13 @@ type User = {
 ```
 
 #### 3.4 에러 처리
+
 - 발생 가능한 에러 유형
 - 각 에러의 처리 방식
 - 에러 메시지 형식
 
 #### 3.5 테스트 케이스
+
 ```
 Test Suite: [기능명]
 
@@ -106,6 +112,7 @@ Implementation Order:
 spec-validator agent를 호출하여 명세서 품질을 검증합니다:
 
 검증 기준:
+
 - [ ] 모든 파일 경로가 명시됨
 - [ ] 모든 함수 시그니처가 정의됨
 - [ ] 에러 처리 방식이 명시됨
@@ -126,62 +133,76 @@ spec-validator agent를 호출하여 명세서 품질을 검증합니다:
 **Status**: draft | validated | approved
 
 ## Overview
+
 [명세서 요약]
 
 ## Design Decisions
+
 - Decision 1: [내용] - [근거]
 - Decision 2: [내용] - [근거]
 
 ## File Changes
 
 ### [파일 경로 1] (수정)
+
 **Purpose**: [목적]
 ```
+
 [구체적인 코드 변경 내용]
+
 ```
 
 ### [파일 경로 2] (생성)
 **Purpose**: [목적]
 ```
+
 [전체 파일 내용 또는 구조]
-```
+
+````
 
 ## Type Definitions
 ```typescript
 [타입 정의]
-```
+````
 
 ## Error Handling
-| Error Type | Condition | Response |
-|------------|-----------|----------|
-| [Type] | [조건] | [처리 방식] |
+
+| Error Type | Condition | Response    |
+| ---------- | --------- | ----------- |
+| [Type]     | [조건]    | [처리 방식] |
 
 ## Test Cases
-| ID | Description | Input | Expected Output |
-|----|-------------|-------|-----------------|
-| T1 | [설명] | [입력] | [출력] |
+
+| ID  | Description | Input  | Expected Output |
+| --- | ----------- | ------ | --------------- |
+| T1  | [설명]      | [입력] | [출력]          |
 
 ## Implementation Order
+
 1. [Step] - [파일] - [의존성]
 
 ## Validation Checklist
+
 - [ ] File paths specified
 - [ ] Function signatures defined
 - [ ] Error handling defined
 - [ ] Test cases included
 - [ ] No ambiguous language
+
 ```
 
 ### 7. 다음 단계 안내
 
 ```
+
 Planning Phase 완료!
 
 산출물: .claude/simple-engineering/specs/{task-id}.md
 검증 상태: [validated/needs-review]
 
 다음 단계로 진행하려면:
-/simple:implement .claude/simple-engineering/specs/{task-id}.md
+/simple-engineering:implement .claude/simple-engineering/specs/{task-id}.md
+
 ```
 
 ## 사용할 Skills
@@ -192,3 +213,4 @@ Planning Phase 완료!
 
 - **spec-validator**: 명세서 품질 검증
 - **verifier**: 설계 결정 체크포인트 관리
+```

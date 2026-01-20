@@ -1,5 +1,5 @@
 ---
-name: commit
+name: contribution:commit
 description: Conventional Commit 형식으로 한글 커밋 메시지를 작성하고 커밋합니다
 ---
 
@@ -46,11 +46,13 @@ git log --oneline -5
 | revert | 이전 커밋 되돌리기 |
 
 **Scope 규칙**:
+
 - 변경된 모듈, 컴포넌트, 기능 영역을 나타냅니다
 - 소문자 영어로 작성합니다
 - 예: `auth`, `api`, `ui`, `db`, `config`
 
 **메시지 작성 규칙**:
+
 - Summary는 한글로 작성 (50자 이내 권장)
 - 명령형으로 작성 ("추가", "수정", "삭제" 등)
 - 마침표 사용하지 않음

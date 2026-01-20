@@ -1,5 +1,5 @@
 ---
-name: pr
+name: contribution:pr
 description: GitHub PR을 한글로 작성하여 생성합니다. 템플릿이 있으면 활용합니다.
 ---
 
@@ -69,6 +69,7 @@ ls -la PULL_REQUEST_TEMPLATE.md 2>/dev/null
 - [ ] {테스트 항목 2}
 
 ---
+
 🤖 Generated with [Claude Code](https://claude.ai/code)
 ```
 
@@ -77,17 +78,21 @@ ls -la PULL_REQUEST_TEMPLATE.md 2>/dev/null
 AskUserQuestion 도구를 사용하여 다음 항목들을 확인하세요:
 
 **질문 1: Draft PR 여부**
+
 - 옵션: "일반 PR (바로 리뷰 요청)", "Draft PR (작업 중)"
 
 **질문 2: Assignee (담당자)**
+
 - 옵션: "나 자신", "지정 안 함", "직접 입력"
 
 **질문 3: Labels (라벨)**
+
 - 먼저 `gh label list`로 사용 가능한 라벨을 확인하세요
 - 옵션으로 주요 라벨들을 제시하세요 (예: "enhancement", "bug", "documentation")
 - multiSelect: true로 설정하여 여러 개 선택 가능하게 하세요
 
 **질문 4: Reviewers (리뷰어)**
+
 - 옵션: "지정 안 함", "직접 입력"
 - Draft PR인 경우 이 질문은 건너뛰어도 됩니다
 
@@ -107,6 +112,7 @@ EOF
 ```
 
 사용하지 않는 옵션은 제외하세요:
+
 - Draft PR이 아니면 `--draft` 제외
 - Assignee를 지정 안 하면 `--assignee` 제외
 - Labels이 없으면 `--label` 제외
@@ -115,6 +121,7 @@ EOF
 ### 8. 결과 보고
 
 PR이 생성되면 다음 정보를 알려주세요:
+
 - PR URL
 - PR 번호
 - 설정된 옵션들 (assignee, labels, reviewers)
@@ -142,6 +149,7 @@ PR이 생성되면 다음 정보를 알려주세요:
 - [ ] 세션 만료 후 재로그인 동작 확인
 
 ---
+
 🤖 Generated with [Claude Code](https://claude.ai/code)
 ```
 
