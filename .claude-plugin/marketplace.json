@@ -5,6 +5,12 @@
   },
   "plugins": [
     {
+      "name": "contribution",
+      "source": "./plugins/contribution",
+      "description": "Conventional Commit 형식의 한글 커밋과 PR 생성을 지원하는 플러그인",
+      "version": "1.0.0"
+    },
+    {
       "name": "session-learner",
       "source": "./plugins/session-learner",
       "description": "Claude Code 세션에서 학습 내용을 자동으로 추출하여 Git 레포지토리에 저장하는 플러그인",
