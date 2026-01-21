@@ -107,6 +107,26 @@ Implementation Order:
 3. [Step 3] - 파일: Z, 의존성: Step 1, 2
 ```
 
+### 4.1 TodoWrite를 활용한 작업 추적
+
+**중요**: 구현 순서가 확정되면 `TodoWrite` 도구를 사용하여 작업 목록을 생성합니다.
+
+```
+TodoWrite 사용 예시:
+
+todos: [
+  { content: "Step 1 설명", status: "pending", activeForm: "Step 1 진행 중" },
+  { content: "Step 2 설명", status: "pending", activeForm: "Step 2 진행 중" },
+  { content: "Step 3 설명", status: "pending", activeForm: "Step 3 진행 중" }
+]
+```
+
+이를 통해:
+
+- 구현 단계별 진행 상황을 시각적으로 추적
+- 사용자에게 현재 진행 상태 공유
+- 복잡한 작업에서 누락 방지
+
 ### 5. 명세서 검증
 
 spec-validator agent를 호출하여 명세서 품질을 검증합니다:
