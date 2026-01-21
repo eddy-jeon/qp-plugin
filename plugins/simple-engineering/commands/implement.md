@@ -1,5 +1,5 @@
 ---
-name: simple:implement
+name: simple-engineering:implement
 description: 명세서를 기반으로 One-shot 코드 생성을 수행합니다. 대화의 소용돌이를 방지합니다.
 arguments:
   - name: spec-file
@@ -45,7 +45,7 @@ Spec Validation Checklist:
 명세서에 다음 정보가 누락되었습니다:
 - [누락 항목]
 
-/simple:plan 으로 돌아가 명세서를 보완하거나,
+/simple-engineering:plan 으로 돌아가 명세서를 보완하거나,
 continue 입력 시 최선의 판단으로 진행합니다.
 ```
 

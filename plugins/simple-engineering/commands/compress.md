@@ -1,5 +1,5 @@
 ---
-name: simple:compress
+name: simple-engineering:compress
 description: 방대한 정보를 AI가 소화 가능한 형태로 압축합니다. 컨텍스트 엔지니어링의 핵심 도구입니다.
 arguments:
   - name: target

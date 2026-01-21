@@ -19,7 +19,7 @@ claude --plugin-dir /path/to/simple-engineering
 ### Phase 1: Research
 
 ```bash
-/simple:research [task]
+/simple-engineering:research [task]
 ```
 
 체계적 조사 및 분석을 수행합니다.
@@ -30,7 +30,7 @@ claude --plugin-dir /path/to/simple-engineering
 ### Phase 2: Planning
 
 ```bash
-/simple:plan [research-file]
+/simple-engineering:plan [research-file]
 ```
 
 "숫자로 색칠하기(Paint-by-Numbers)" 수준의 상세 명세서를 작성합니다.
@@ -41,7 +41,7 @@ claude --plugin-dir /path/to/simple-engineering
 ### Phase 3: Implementation
 
 ```bash
-/simple:implement [spec-file]
+/simple-engineering:implement [spec-file]
 ```
 
 명세서 기반 **단발성(One-shot)** 코드 생성을 수행합니다.
@@ -53,7 +53,7 @@ claude --plugin-dir /path/to/simple-engineering
 ### 컨텍스트 압축
 
 ```bash
-/simple:compress [file-or-directory]
+/simple-engineering:compress [file-or-directory]
 ```
 
 방대한 정보를 AI가 소화 가능한 명세서로 변환합니다.
@@ -61,7 +61,7 @@ claude --plugin-dir /path/to/simple-engineering
 ### 복잡성 분석
 
 ```bash
-/simple:analyze [target]
+/simple-engineering:analyze [target]
 ```
 
 Essential vs Accidental 복잡성을 식별합니다.

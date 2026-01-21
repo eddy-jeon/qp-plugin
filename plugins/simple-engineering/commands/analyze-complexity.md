@@ -1,5 +1,5 @@
 ---
-name: simple:analyze
+name: simple-engineering:analyze
 description: Essential vs Accidental 복잡성을 분석하여 단순화 기회를 식별합니다.
 arguments:
   - name: target
