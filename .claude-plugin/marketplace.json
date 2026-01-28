@@ -22,6 +22,12 @@
       "description": "AI 협업 시 Simple Engineering 원칙을 적용하는 3단계 워크플로우 플러그인"
     },
     {
+      "name": "friday",
+      "source": "./plugins/friday",
+      "description": "PR 코드 리뷰 비서 - FE 영역 리뷰 및 PR 코멘트 게시",
+      "version": "1.0.0"
+    },
+    {
       "name": "workday-prep",
       "source": "./plugins/workday-prep",
       "description": "하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림을 확인하는 플러그인"
