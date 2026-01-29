@@ -1,0 +1,9 @@
+{
+  "name": "saturday",
+  "version": "1.0.0",
+  "description": "코드 리뷰 기반 코드 품질 개선 워크플로우 - 기존 브랜치 개선 또는 새 브랜치 구현",
+  "author": {
+    "name": "eddy-jeon"
+  },
+  "keywords": ["code-review", "refactoring", "automation", "frontend"]
+}
