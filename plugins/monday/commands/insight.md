@@ -13,47 +13,46 @@ arguments:
 
 ## 워크플로우
 
-### 0. Google Drive MCP 설정 확인
+### 0. gdrive CLI 설정 확인
 
-먼저 Google Drive MCP가 사용 가능한지 확인합니다.
+먼저 gdrive CLI가 설치되고 인증되었는지 확인합니다.
 
 **확인 방법**:
 ```bash
-# MCP 설정 파일 확인
-cat ~/.claude/mcp.json 2>/dev/null || cat .mcp.json 2>/dev/null
+# gdrive 설치 확인
+which gdrive
+
+# 계정 인증 확인
+gdrive account list
 ```
 
-**Case A: MCP 설정됨 + 인증됨**
-- `mcp__gdrive__search` 도구가 사용 가능하면 → 1단계로 진행
+**Case A: gdrive 설치됨 + 인증됨**
+- `gdrive account list`에서 계정이 보이면 → 1단계로 진행
 
-**Case B: MCP 설정 안 됨**
-- 사용자에게 안내: "Google Drive MCP를 설정합니다."
-- 설정 파일에 gdrive 설정 추가:
+**Case B: gdrive 미설치**
+- 안내: "gdrive CLI를 설치해야 합니다."
+- 설치 방법 안내:
 
 ```bash
-# ~/.claude/mcp.json 파일에 추가 (없으면 생성)
+# macOS
+brew install glotlabs/tap/gdrive
+
+# Linux (다운로드)
+# https://github.com/glotlabs/gdrive/releases 에서 다운로드
 ```
 
-```json
-{
-  "mcpServers": {
-    "gdrive": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-gdrive"]
-    }
-  }
-}
-```
-
-- 안내: "설정이 추가되었습니다. Claude Code를 재시작하면 Google 로그인 창이 열립니다."
-- 안내: "로그인 완료 후 `/monday:insight {days}`를 다시 실행해주세요."
+- 안내: "설치 완료 후 `/monday:insight {days}`를 다시 실행해주세요."
 - 종료
 
-**Case C: MCP 설정됨 + 인증 안 됨**
-- `mcp__gdrive__search` 실행 시 인증 오류 발생
+**Case C: gdrive 설치됨 + 인증 안 됨**
+- `gdrive account list` 결과가 비어있으면
 - 안내: "Google 계정 인증이 필요합니다."
-- 브라우저에서 인증 URL 오픈 안내
-- 안내: "로그인 완료 후 다시 실행해주세요."
+
+```bash
+gdrive account add
+```
+
+- 안내: "브라우저에서 Google 로그인 후 다시 실행해주세요."
 - 종료
 
 ### 1. 관점 정의 로드
@@ -62,25 +61,36 @@ cat ~/.claude/mcp.json 2>/dev/null || cat .mcp.json 2>/dev/null
 
 ### 2. 회의록 검색
 
-Google Drive MCP를 사용하여 회의록을 검색합니다.
+gdrive CLI를 사용하여 회의록을 검색합니다.
 
-**검색 조건**:
-- 파일명에 "Gemini가 작성한 회의록" 포함
-- 최근 {days}일 이내 생성/수정된 파일
+**검색 명령어**:
+```bash
+# "Gemini가 작성한 회의록" 이름 패턴으로 검색
+gdrive files list --query "name contains 'Gemini가 작성한 회의록'"
+```
 
-**MCP 도구 사용**:
-```
-mcp__gdrive__search 도구를 사용하여 검색
-쿼리: "Gemini가 작성한 회의록"
-```
+**날짜 필터링**:
+- 검색 결과에서 최근 {days}일 이내 파일만 선택
+- 파일명에 포함된 날짜 정보를 파싱하거나 modifiedTime 기준으로 필터링
 
 ### 3. 회의록 내용 읽기
 
 검색된 각 회의록 파일의 내용을 읽습니다.
 
-**MCP 도구 사용**:
+**임시 디렉토리 생성**:
+```bash
+TEMP_DIR=$(mktemp -d)
 ```
-mcp__gdrive__read_file 도구를 사용하여 파일 내용 읽기
+
+**파일 export (Google Docs → txt)**:
+```bash
+# 각 파일에 대해
+gdrive files export {fileId} --destination "$TEMP_DIR/"
+```
+
+**파일 내용 읽기**:
+```bash
+cat "$TEMP_DIR/{filename}"
 ```
 
 ### 4. 인사이트 추출
@@ -92,7 +102,13 @@ mcp__gdrive__read_file 도구를 사용하여 파일 내용 읽기
 - 단순 요약이 아닌 **행동 가능한 인사이트** 중심으로 정리
 - 관점과 관련 없는 내용은 제외
 
-### 5. 결과 출력
+### 5. 임시 파일 정리
+
+```bash
+rm -rf "$TEMP_DIR"
+```
+
+### 6. 결과 출력
 
 다음 형식으로 인사이트를 출력합니다:
 
@@ -141,11 +157,11 @@ mcp__gdrive__read_file 도구를 사용하여 파일 내용 읽기
 
 ## 주의사항
 
-- Google Drive MCP가 설정되어 있지 않으면 자동으로 설정을 시도합니다
-- MCP 설정 후 Claude Code 재시작이 필요할 수 있습니다
-- Google 계정 인증은 브라우저에서 사용자가 직접 진행해야 합니다
+- gdrive CLI가 설치되어 있지 않으면 설치 방법을 안내합니다
+- Google 계정 인증은 `gdrive account add` 명령어로 진행합니다
 - 회의록이 없으면 "해당 기간에 회의록이 없습니다"를 출력합니다
 - 파일 접근 권한이 없는 회의록은 건너뜁니다
+- 임시 파일은 작업 완료 후 자동으로 삭제됩니다
 
 ## 관점 수정
 

@@ -28,31 +28,36 @@
 
 `config/perspectives.md` 파일을 수정하여 관점을 추가하거나 변경할 수 있습니다.
 
-## Google Drive MCP 설정 (자동)
+## 사전 요구사항: gdrive CLI
 
-이 플러그인은 Google Drive MCP 서버를 사용합니다.
+이 플러그인은 [gdrive CLI](https://github.com/glotlabs/gdrive)를 사용합니다.
 
-**처음 실행 시 자동 설정**:
-1. `/monday:insight 7` 실행
-2. MCP 설정이 없으면 자동으로 `~/.claude/mcp.json`에 설정 추가
-3. Claude Code 재시작 안내
-4. 재시작 후 Google 로그인 창이 열림 → 로그인 진행
-5. 다시 `/monday:insight 7` 실행
+### 설치
 
-**수동 설정이 필요한 경우**:
+```bash
+# macOS
+brew install glotlabs/tap/gdrive
 
-`~/.claude/mcp.json`에 다음 내용 추가:
-
-```json
-{
-  "mcpServers": {
-    "gdrive": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-gdrive"]
-    }
-  }
-}
+# Linux - 릴리즈 페이지에서 다운로드
+# https://github.com/glotlabs/gdrive/releases
 ```
+
+### Google 계정 인증
+
+```bash
+gdrive account add
+```
+
+브라우저가 열리면 Google 계정으로 로그인하세요.
+
+### 설치 확인
+
+```bash
+gdrive account list
+# → 인증된 계정이 표시되면 준비 완료
+```
+
+**참고**: `/monday:insight` 실행 시 gdrive가 없거나 인증이 안 되어 있으면 자동으로 안내합니다.
 
 ## 출력 예시
 
