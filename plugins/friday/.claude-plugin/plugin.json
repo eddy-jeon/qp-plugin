@@ -1,6 +1,6 @@
 {
   "name": "friday",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PR 코드 리뷰 비서 - FE 영역 리뷰 및 PR 코멘트 게시",
   "author": {
     "name": "Eddy Jeon"
