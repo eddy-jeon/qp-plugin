@@ -35,7 +35,7 @@ gdrive account list
 
 ```bash
 # macOS
-brew install glotlabs/tap/gdrive
+brew install gdrive
 
 # Linux (다운로드)
 # https://github.com/glotlabs/gdrive/releases 에서 다운로드
