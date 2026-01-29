@@ -31,6 +31,12 @@
       "name": "workday-prep",
       "source": "./plugins/workday-prep",
       "description": "하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림을 확인하는 플러그인"
+    },
+    {
+      "name": "monday",
+      "source": "./plugins/monday",
+      "description": "미팅 회의록에서 업무 인사이트를 추출하는 플러그인",
+      "version": "1.0.0"
     }
   ]
 }

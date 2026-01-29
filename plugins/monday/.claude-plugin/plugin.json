@@ -1,0 +1,9 @@
+{
+  "name": "monday",
+  "version": "1.0.0",
+  "description": "미팅 회의록에서 업무 인사이트를 추출하는 플러그인",
+  "author": {
+    "name": "Eddy Jeon"
+  },
+  "keywords": ["meeting", "insight", "google-drive", "gemini"]
+}
