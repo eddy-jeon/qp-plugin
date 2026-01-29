@@ -37,6 +37,12 @@
       "source": "./plugins/monday",
       "description": "미팅 회의록에서 업무 인사이트를 추출하는 플러그인",
       "version": "1.0.0"
+    },
+    {
+      "name": "sunday",
+      "source": "./plugins/sunday",
+      "description": "Jira 티켓 기반 완전 자동화 개발 워크플로우 - 요구사항 분석부터 PR 오픈까지",
+      "version": "1.0.0"
     }
   ]
 }
