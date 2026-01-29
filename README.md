@@ -16,6 +16,9 @@ Claude Code 플러그인 마켓플레이스 저장소입니다.
 /plugin add eddy-jeon/qp-plugin:simple-engineering
 /plugin add eddy-jeon/qp-plugin:workday-prep
 /plugin add eddy-jeon/qp-plugin:friday
+/plugin add eddy-jeon/qp-plugin:monday
+/plugin add eddy-jeon/qp-plugin:sunday
+/plugin add eddy-jeon/qp-plugin:saturday
 ```
 
 ## 플러그인 목록
@@ -27,6 +30,9 @@ Claude Code 플러그인 마켓플레이스 저장소입니다.
 | [simple-engineering](./plugins/simple-engineering) | AI 협업 시 Simple Engineering 원칙을 적용하는 3단계 워크플로우 (Research → Plan → Implement) |
 | [friday](./plugins/friday) | PR 코드 리뷰 비서 - FE 영역 리뷰 및 PR 코멘트 게시 |
 | [workday-prep](./plugins/workday-prep) | 하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림 확인 |
+| [monday](./plugins/monday) | 미팅 회의록에서 업무 인사이트를 추출하는 플러그인 |
+| [sunday](./plugins/sunday) | Jira 티켓 기반 완전 자동화 개발 워크플로우 - 요구사항 분석부터 PR 오픈까지 |
+| [saturday](./plugins/saturday) | 코드 리뷰 기반 코드 품질 개선 워크플로우 - 기존 브랜치 개선 또는 새 브랜치 구현 |
 
 ## 구조
 
@@ -37,9 +43,12 @@ qp-plugin/
 ├── plugins/
 │   ├── contribution/
 │   ├── session-learner/
-│   ├── friday/
 │   ├── simple-engineering/
-│   └── workday-prep/
+│   ├── friday/
+│   ├── workday-prep/
+│   ├── monday/
+│   ├── sunday/
+│   └── saturday/
 └── README.md
 ```
 
