@@ -1,7 +1,6 @@
 ---
-name: improve
+name: saturday:improve
 description: 기존 브랜치의 코드를 리뷰하고 80점 이상 통과할 때까지 개선합니다.
-invocation: user
 arguments:
   - name: branch
     description: 개선할 브랜치명 (생략 시 현재 브랜치)

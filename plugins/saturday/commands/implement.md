@@ -1,7 +1,6 @@
 ---
-name: implement
+name: saturday:implement
 description: 새 브랜치에서 요구사항 기반 코드를 구현하고 80점 이상 통과할 때까지 개선합니다.
-invocation: user
 arguments:
   - name: requirement
     description: 구현할 요구사항 텍스트
