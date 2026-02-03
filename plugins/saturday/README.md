@@ -17,11 +17,14 @@ Saturday는 **코드 리뷰 ↔ 코드 구현 루프**를 통해 80점 이상의
 현재 브랜치 또는 지정한 브랜치의 변경사항을 리뷰하고 개선합니다.
 
 ```bash
-# 현재 브랜치 개선
+# 현재 브랜치 개선 (develop의 가이드 참조)
 /saturday:improve
 
 # 특정 브랜치 개선
 /saturday:improve feature/user-profile
+
+# 다른 브랜치의 가이드 참조
+/saturday:improve --guide-branch main
 ```
 
 **워크플로우:**
@@ -36,11 +39,14 @@ Saturday는 **코드 리뷰 ↔ 코드 구현 루프**를 통해 80점 이상의
 요구사항을 받아 새 브랜치에서 코드를 구현합니다.
 
 ```bash
-# 인자로 요구사항 전달
+# 인자로 요구사항 전달 (develop의 가이드 참조)
 /saturday:implement "버튼 클릭 시 모달 표시"
 
 # 대화형 입력
 /saturday:implement
+
+# 다른 브랜치의 가이드 참조
+/saturday:implement "버튼 클릭 시 모달 표시" --guide-branch main
 ```
 
 **워크플로우:**
@@ -50,6 +56,17 @@ Saturday는 **코드 리뷰 ↔ 코드 구현 루프**를 통해 80점 이상의
 4. 코드 리뷰 수행
 5. 80점 미만이면 피드백 반영 후 재리뷰
 6. 80점 이상 통과 시 완료
+
+## 가이드 브랜치 참조
+
+작업 브랜치에 frontend-doc이 없거나 오래된 경우, 다른 브랜치(기본값: `develop`)의 최신 가이드를 참조합니다.
+
+| 옵션 | 설명 |
+|------|------|
+| 기본값 | `develop` 브랜치의 frontend-doc 참조 |
+| `--guide-branch main` | main 브랜치의 frontend-doc 참조 |
+
+이 기능은 `git show` 명령어를 사용하여 브랜치 전환 없이 다른 브랜치의 파일을 읽습니다.
 
 ## 코드 리뷰 기준
 

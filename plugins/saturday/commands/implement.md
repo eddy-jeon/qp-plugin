@@ -5,6 +5,9 @@ arguments:
   - name: requirement
     description: 구현할 요구사항 텍스트
     required: false
+  - name: guide-branch
+    description: frontend-doc을 참조할 브랜치 (기본값: develop)
+    required: false
 ---
 
 # /saturday:implement - 새 브랜치 구현
@@ -61,9 +64,13 @@ git checkout -b feature/{slug}
 
 frontend-doc을 참고하여 요구사항 구현:
 
-1. **frontend-doc 로드**
+1. **frontend-doc 로드** (guide-branch에서 참조, 기본값: develop)
    ```bash
-   ls -la apps/front/.claude/skills/frontend-doc/
+   # guide-branch에서 파일 목록 조회
+   git ls-tree -r --name-only {guide-branch} -- apps/front/.claude/skills/frontend-doc/
+
+   # 각 파일 내용 읽기
+   git show {guide-branch}:apps/front/.claude/skills/frontend-doc/SKILL.md
    ```
 
 2. **구조 분석**
@@ -95,7 +102,10 @@ Task agent: code-reviewer
 입력:
 - git diff main...HEAD (apps/front/ 변경사항만)
 - frontend-doc 스킬 참조
+- guide-branch: {guide-branch} (기본값: develop)
 ```
+
+> ⚠️ `guide-branch` 인자가 없으면 기본값 `develop` 사용
 
 #### 4.2 점수 확인
 
@@ -159,7 +169,7 @@ git commit -m "fix: code review 피드백 반영
 
 ## 예시
 
-### 인자로 요구사항 전달
+### 인자로 요구사항 전달 (develop의 가이드 참조)
 
 ```
 /saturday:implement "버튼 클릭 시 모달 표시"
@@ -171,6 +181,12 @@ git commit -m "fix: code review 피드백 반영
 /saturday:implement
 > 구현할 요구사항을 입력해주세요:
 사용자 프로필 페이지에 아바타 업로드 기능 추가
+```
+
+### 다른 브랜치의 가이드 참조
+
+```
+/saturday:implement "버튼 클릭 시 모달 표시" --guide-branch main
 ```
 
 ## 주의 사항

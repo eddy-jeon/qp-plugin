@@ -5,6 +5,9 @@ arguments:
   - name: ticket
     description: Jira 티켓 키 (예: PROJ-123)
     required: true
+  - name: guide-branch
+    description: frontend-doc을 참조할 브랜치 (기본값: develop)
+    required: false
 ---
 
 # Sunday: 완전 자동화 개발 워크플로우
@@ -101,9 +104,19 @@ git checkout -b $BRANCH_NAME
 
 ### 3.1 frontend-doc 스킬 로드
 
+`guide-branch`에서 frontend-doc을 읽습니다 (기본값: `develop`):
+
 ```bash
-ls -la apps/front/.claude/skills/frontend-doc/
+# 디렉토리 내 파일 목록 확인
+git ls-tree -r --name-only {guide-branch} -- apps/front/.claude/skills/frontend-doc/
+
+# 각 파일 내용 읽기
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/SKILL.md
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/components.md
+# ... 모든 파일 읽기
 ```
+
+> ⚠️ `guide-branch`가 지정되지 않으면 기본값 `develop` 사용
 
 frontend-doc이 있으면:
 1. `SKILL.md`를 읽어 전체 구조 파악
@@ -116,7 +129,7 @@ planner가 수립한 작업 계획을 순서대로 실행:
 
 1. **각 Task 수행**:
    - 변경 대상 파일 확인
-   - frontend-doc 규칙에 맞게 구현
+   - 3.1에서 로드한 `guide-branch`의 frontend-doc 규칙에 맞게 구현
    - 필요한 컴포넌트/함수/타입 추가
 
 2. **테스트 코드 작성**:
@@ -146,6 +159,7 @@ git diff --name-only | grep "^apps/front/"
 **입력 정보**:
 - git diff (`apps/front/` 변경사항만)
 - frontend-doc 스킬 위치
+- guide-branch: {guide-branch} (기본값: develop)
 
 **요구사항 정보는 전달하지 않습니다** (순수 코드 품질 평가)
 

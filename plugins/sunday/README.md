@@ -12,8 +12,12 @@ Jira CLI 설치 및 로그인 설정을 진행합니다.
 
 ## 사용법
 
-```
-/sunday:start {JIRA-123}
+```bash
+# 기본 사용 (develop의 가이드 참조)
+/sunday:start JIRA-123
+
+# 다른 브랜치의 가이드 참조
+/sunday:start JIRA-123 --guide-branch main
 ```
 
 지정된 Jira 티켓에 대해 다음 워크플로우를 **완전 자동화**로 수행합니다:
@@ -33,6 +37,7 @@ Jira CLI 설치 및 로그인 설정을 진행합니다.
 | 완전 자동화 | 한 번 호출하면 PR 오픈까지 사람 개입 없이 진행 |
 | Jira CLI 사용 | MCP 대신 `jira` CLI 도구로 티켓 조회/업데이트 |
 | frontend-doc 기준 | `apps/front/.claude/skills/frontend-doc`에 명시된 규칙만 감점 대상 |
+| 가이드 브랜치 | `--guide-branch`로 다른 브랜치의 최신 가이드 참조 (기본값: `develop`) |
 | 80점 게이트 | 리뷰 통과/재시도 결정, 통과할 때까지 무한 루프 |
 
 ## 컴포넌트

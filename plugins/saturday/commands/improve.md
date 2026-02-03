@@ -5,6 +5,9 @@ arguments:
   - name: branch
     description: 개선할 브랜치명 (생략 시 현재 브랜치)
     required: false
+  - name: guide-branch
+    description: frontend-doc을 참조할 브랜치 (기본값: develop)
+    required: false
 ---
 
 # /saturday:improve - 기존 브랜치 개선
@@ -70,7 +73,10 @@ Task agent: code-reviewer
 입력:
 - git diff {base}...HEAD (apps/front/ 변경사항만)
 - frontend-doc 스킬 참조
+- guide-branch: {guide-branch} (기본값: develop)
 ```
+
+> ⚠️ `guide-branch` 인자가 없으면 기본값 `develop` 사용
 
 #### 4.2 점수 확인
 
@@ -128,7 +134,7 @@ git commit -m "fix: code review 피드백 반영
 
 ## 예시
 
-### 기본 사용 (현재 브랜치)
+### 기본 사용 (현재 브랜치, develop의 가이드 참조)
 
 ```
 /saturday:improve
@@ -138,6 +144,13 @@ git commit -m "fix: code review 피드백 반영
 
 ```
 /saturday:improve feature/user-profile
+```
+
+### 다른 브랜치의 가이드 참조
+
+```
+/saturday:improve --guide-branch main
+/saturday:improve feature/user-profile --guide-branch main
 ```
 
 ## 주의 사항

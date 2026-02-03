@@ -21,6 +21,7 @@ model: sonnet
 
 1. **git diff**: `apps/front/` 하위 변경사항만
 2. **frontend-doc 스킬**: `apps/front/.claude/skills/frontend-doc`
+3. **guide-branch**: frontend-doc을 읽을 브랜치 (기본값: `develop`)
 
 **요구사항 정보는 전달되지 않습니다.**
 
@@ -28,16 +29,26 @@ model: sonnet
 
 ### 1. frontend-doc 로드
 
+`guide-branch`에서 frontend-doc을 읽습니다 (기본값: `develop`):
+
 ```bash
-ls -la apps/front/.claude/skills/frontend-doc/
+# 디렉토리 내 파일 목록 확인
+git ls-tree -r --name-only {guide-branch} -- apps/front/.claude/skills/frontend-doc/
+
+# 각 파일 내용 읽기
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/SKILL.md
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/components.md
+# ... 모든 파일 읽기
 ```
+
+> ⚠️ `guide-branch`가 지정되지 않으면 기본값 `develop` 사용
 
 frontend-doc이 있으면:
 1. `SKILL.md` 읽어 전체 구조 파악
 2. 모든 규칙 문서 읽기
 3. 감점 기준이 될 규칙 목록 정리
 
-frontend-doc이 없으면:
+frontend-doc이 없으면 (브랜치에 해당 경로가 없는 경우):
 - **score**: 100점
 - **violations**: 빈 배열
 - 일반 품질 이슈만 references로 제공
