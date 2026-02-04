@@ -5,6 +5,9 @@ arguments:
   - name: pr
     description: PR 번호 또는 URL
     required: true
+  - name: guide-branch
+    description: frontend-doc을 참조할 브랜치 (기본값: develop)
+    required: false
 ---
 
 # PR FE 코드 리뷰
@@ -87,16 +90,23 @@ gh pr diff {pr} --name-only
 
 ### 6. frontend-doc 스킬 로드
 
-`apps/front/.claude/` 디렉토리에서 `frontend-doc` 스킬을 찾습니다:
+`guide-branch`에서 frontend-doc을 읽습니다 (기본값: `develop`):
 
 ```bash
-# frontend-doc 스킬 탐색
-ls apps/front/.claude/skills/frontend-doc/
+# 디렉토리 내 파일 목록 확인
+git ls-tree -r --name-only {guide-branch} -- apps/front/.claude/skills/frontend-doc/
+
+# 각 파일 내용 읽기
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/SKILL.md
+git show {guide-branch}:apps/front/.claude/skills/frontend-doc/components.md
+# ... 모든 파일 읽기
 ```
 
-**frontend-doc 스킬이 있는 경우 (기본 경로)**:
+> ⚠️ `guide-branch`가 지정되지 않으면 기본값 `develop` 사용
 
-1. `apps/front/.claude/skills/frontend-doc/` 하위의 모든 문서를 탐색합니다
+**frontend-doc 스킬이 있는 경우**:
+
+1. `guide-branch`의 `apps/front/.claude/skills/frontend-doc/` 하위의 모든 문서를 탐색합니다
 2. SKILL.md를 먼저 읽어 전체 구조와 목차를 파악합니다
 3. 리뷰 대상 파일과 관련된 문서를 선별하여 읽습니다:
    - 변경된 파일이 속한 도메인/모듈에 해당하는 문서
@@ -104,7 +114,7 @@ ls apps/front/.claude/skills/frontend-doc/
    - 컴포넌트 설계 가이드, 상태 관리 규칙 등
 4. 이 문서들을 리뷰 기준으로 **적극 활용**합니다. 프로젝트 고유의 규칙과 패턴이 일반적인 FE 모범 사례보다 우선합니다.
 
-**frontend-doc 스킬이 없는 경우 (fallback)**:
+**frontend-doc 스킬이 없는 경우 (fallback)** (브랜치에 해당 경로가 없는 경우):
 
 friday 내장 `fe-review` skill을 사용합니다.
 경로: `${CLAUDE_PLUGIN_ROOT}/skills/fe-review/SKILL.md`

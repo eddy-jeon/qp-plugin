@@ -6,11 +6,17 @@ PR의 프론트엔드 영역을 리뷰하고, 피드백을 정리하여 PR 코�
 
 ### 리뷰 시작
 
-```
-/friday:review-pr {PR번호}
+```bash
+# 기본 사용 (develop의 가이드 참조)
+/friday:review-pr 123
+
+# 다른 브랜치의 가이드 참조
+/friday:review-pr 123 --guide-branch main
 ```
 
 PR 브랜치를 checkout하여 변경된 FE 파일을 리뷰합니다. 리뷰 결과에 대해 피드백을 주고받을 수 있습니다.
+
+`--guide-branch` 옵션으로 frontend-doc을 참조할 브랜치를 지정할 수 있습니다 (기본값: `develop`).
 
 ### 리뷰 게시
 
