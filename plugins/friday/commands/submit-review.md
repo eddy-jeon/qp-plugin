@@ -64,80 +64,54 @@ AskUserQuestion 도구를 사용합니다:
 
 ### 5. PR Review 제출 (라인 코멘트 포함)
 
-`gh pr review` 명령어로 라인 코멘트와 함께 리뷰를 제출합니다.
+`gh api`로 PR Review와 라인 코멘트를 **함께** 제출합니다.
 
-**수정 필요 항목이 있는 경우 (Request Changes)**:
+> ⚠️ `gh pr review`는 라인 코멘트를 지원하지 않으므로, `POST /pulls/{pr}/reviews` API를 사용합니다.
+
+**코멘트가 있는 경우 (Request Changes 또는 Approve)**:
 
 ```bash
-gh pr review {pr번호} --request-changes --body "$(cat <<'EOF'
+gh api repos/{owner}/{repo}/pulls/{pr번호}/reviews \
+  -X POST \
+  -f event="{REQUEST_CHANGES|APPROVE}" \
+  -f body="$(cat <<'EOF'
 ## 🔍 Code Review by Friday
 
 ### 요약
 - 수정 필요: {N}건
 - 권장 사항: {N}건
 
-라인별 코멘트를 확인해 주세요.
-
 ---
 *🤖 Reviewed by [Friday](https://github.com/anthropics/claude-code) — PR Code Review Assistant*
 EOF
-)"
-```
-
-**권장 사항만 있는 경우 (Approve)**:
-
-```bash
-gh pr review {pr번호} --approve --body "$(cat <<'EOF'
-## 🔍 Code Review by Friday
-
-### 요약
-- 권장 사항: {N}건
-- 잘된 점: {N}건
-
-라인별 코멘트를 확인해 주세요.
-
----
-*🤖 Reviewed by [Friday](https://github.com/anthropics/claude-code) — PR Code Review Assistant*
-EOF
-)"
-```
-
-**코멘트가 없는 경우 (LGTM)**:
-
-```bash
-gh pr review {pr번호} --approve --body "LGTM 🎉
-
----
-*🤖 Reviewed by [Friday](https://github.com/anthropics/claude-code) — PR Code Review Assistant*"
-```
-
-### 6. 라인 코멘트 게시
-
-각 리뷰 항목을 해당 파일의 라인에 코멘트로 게시합니다.
-
-> ⚠️ `gh pr review`는 라인 코멘트를 직접 지원하지 않으므로, API로 별도 게시합니다.
-
-**단일 라인 코멘트**:
-
-```bash
-gh api repos/{owner}/{repo}/pulls/{pr번호}/comments \
-  -f body="{코멘트 내용}" \
-  -f path="{파일 경로}" \
-  -F line={라인 번호} \
-  -f commit_id="{head commit SHA}" \
-  -f side="RIGHT"
+)" \
+  -f 'comments[0][path]=파일경로' \
+  -f 'comments[0][body]=코멘트내용' \
+  -F 'comments[0][line]=라인번호' \
+  -f 'comments[1][path]=파일경로2' \
+  -f 'comments[1][body]=코멘트내용2' \
+  -F 'comments[1][line]=라인번호2'
 ```
 
 **멀티 라인 코멘트** (범위가 있는 경우):
 
 ```bash
-gh api repos/{owner}/{repo}/pulls/{pr번호}/comments \
-  -f body="{코멘트 내용}" \
-  -f path="{파일 경로}" \
-  -F start_line={시작 라인} \
-  -F line={끝 라인} \
-  -f commit_id="{head commit SHA}" \
-  -f side="RIGHT"
+  -f 'comments[0][path]=파일경로' \
+  -f 'comments[0][body]=코멘트내용' \
+  -F 'comments[0][start_line]=시작라인' \
+  -F 'comments[0][line]=끝라인'
+```
+
+**코멘트가 없는 경우 (LGTM)**:
+
+```bash
+gh api repos/{owner}/{repo}/pulls/{pr번호}/reviews \
+  -X POST \
+  -f event="APPROVE" \
+  -f body="LGTM 🎉
+
+---
+*🤖 Reviewed by [Friday](https://github.com/anthropics/claude-code) — PR Code Review Assistant*"
 ```
 
 **코멘트 포맷**:

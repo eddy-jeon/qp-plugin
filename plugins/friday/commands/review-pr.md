@@ -233,22 +233,23 @@ while (attempt < maxAttempts) {
 PR Review를 제출합니다...
 ```
 
-**PR Review 제출**:
+**PR Review + 라인 코멘트 제출** (한 번에):
 
 ```bash
-# 수정 필요 항목이 있는 경우
-gh pr review {pr번호} --request-changes --body "{요약}"
-
-# 권장 사항만 있거나 코멘트 없는 경우
-gh pr review {pr번호} --approve --body "{요약 또는 LGTM}"
+gh api repos/{owner}/{repo}/pulls/{pr번호}/reviews \
+  -X POST \
+  -f event="{REQUEST_CHANGES|APPROVE}" \
+  -f body="{요약}" \
+  -f 'comments[0][path]=파일' \
+  -f 'comments[0][body]=코멘트' \
+  -F 'comments[0][line]=라인'
 ```
 
-**라인 코멘트 게시** (항목이 있는 경우):
+**코멘트 없는 경우 (LGTM)**:
 
 ```bash
-gh api repos/{owner}/{repo}/pulls/{pr번호}/comments \
-  -f body="{코멘트}" -f path="{파일}" -F line={라인} \
-  -f commit_id="{SHA}" -f side="RIGHT"
+gh api repos/{owner}/{repo}/pulls/{pr번호}/reviews \
+  -X POST -f event="APPROVE" -f body="LGTM 🎉"
 ```
 
 ### 8b. 사용자 개입 요청 (최대 반복 도달 시)
