@@ -28,7 +28,7 @@ Claude Code 플러그인 마켓플레이스 저장소입니다.
 | [contribution](./plugins/contribution) | Conventional Commit 형식의 한글 커밋과 PR 생성 지원 |
 | [session-learner](./plugins/session-learner) | Claude Code 세션에서 학습 내용을 자동으로 추출하여 Git 레포지토리에 저장 |
 | [simple-engineering](./plugins/simple-engineering) | AI 협업 시 Simple Engineering 원칙을 적용하는 3단계 워크플로우 (Research → Plan → Implement) |
-| [friday](./plugins/friday) | PR 코드 리뷰 비서 - FE 영역 리뷰 및 PR 코멘트 게시 |
+| [friday](./plugins/friday) | PR 코드 리뷰 비서 - FE 영역 리뷰, 메타리뷰 품질 검증, PR 코멘트 자동 게시 |
 | [workday-prep](./plugins/workday-prep) | 하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림 확인 |
 | [monday](./plugins/monday) | 미팅 회의록에서 업무 인사이트를 추출하는 플러그인 |
 | [sunday](./plugins/sunday) | Jira 티켓 기반 완전 자동화 개발 워크플로우 - 요구사항 분석부터 PR 오픈까지 |
