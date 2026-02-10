@@ -50,45 +50,7 @@ gh pr diff {pr} --name-only
 
 출력에서 `apps/front/` 하위 파일만 필터링합니다. FE 변경 파일이 없으면 사용자에게 알리고 종료합니다.
 
-### 4. 변경 사항 브리핑
-
-리뷰를 시작하기 전에 PR의 전체적인 모습을 사용자에게 브리핑합니다.
-
-**분석 대상**:
-1. PR 제목과 본문에서 변경의 목적 파악
-2. 변경된 파일들의 diff를 읽어 실제 코드 변경 내용 분석
-3. 변경된 파일들 간의 관계 파악 (import/export, 호출 관계 등)
-
-**브리핑 포맷**:
-
-```markdown
-## 📋 PR 변경 사항 브리핑
-
-### 변경 목적
-{PR이 해결하려는 문제 또는 추가하려는 기능 1-2문장 요약}
-
-### 주요 변경 내용
-- {핵심 변경 1}
-- {핵심 변경 2}
-- ...
-
-### 변경 파일 구조
-{파일들 간의 관계를 간략히 설명}
-- `ComponentA.tsx` → `useCustomHook.ts` 사용
-- `api/endpoint.ts` ← `ComponentB.tsx`에서 호출
-- ...
-
-### 영향 범위
-- **직접 영향**: {이 PR로 직접 변경되는 기능/화면}
-- **간접 영향**: {변경으로 인해 영향받을 수 있는 다른 부분}
-
-### 리뷰 포인트
-{이 PR에서 특히 주의 깊게 봐야 할 부분}
-```
-
-브리핑을 제시한 후 사용자가 확인하면 리뷰를 진행합니다.
-
-### 6. frontend-doc 스킬 로드
+### 4. frontend-doc 스킬 로드
 
 `guide-branch`에서 frontend-doc을 읽습니다 (기본값: `develop`):
 
@@ -119,7 +81,7 @@ git show {guide-branch}:apps/front/.claude/skills/frontend-doc/components.md
 friday 내장 `fe-review` skill을 사용합니다.
 경로: `${CLAUDE_PLUGIN_ROOT}/skills/fe-review/SKILL.md`
 
-### 7. FE 코드 리뷰 수행
+### 5. FE 코드 리뷰 수행
 
 변경된 `apps/front/` 하위 파일을 하나씩 Read 도구로 읽으며 리뷰합니다.
 
@@ -152,7 +114,7 @@ friday 내장 `fe-review` skill을 사용합니다.
 
 **중요**: 라인 번호는 PR diff 기준으로 정확히 기록해야 합니다. `/friday:submit-review` 시 해당 라인에 코멘트가 달립니다.
 
-### 7.5. 메타리뷰 루프
+### 5.5. 메타리뷰 루프
 
 1차 리뷰 결과를 `meta-reviewer` agent로 검증합니다. **모두 통과할 때까지 자동으로 반복합니다.**
 
@@ -164,7 +126,7 @@ while (attempt < maxAttempts) {
   result = meta-reviewer 호출()
 
   if (result.modified.length === 0 && result.rejected.length === 0) {
-    // 모두 통과 → 8단계로 이동
+    // 모두 통과 → 6단계로 이동
     break
   } else {
     // 수정 필요 → 자체 수정 후 재시도
@@ -175,7 +137,7 @@ while (attempt < maxAttempts) {
 ```
 
 **meta-reviewer 입력 정보**:
-- 7단계에서 생성된 리뷰 항목들
+- 5단계에서 생성된 리뷰 항목들
 - 변경된 파일들의 전체 코드
 - 관련 기존 코드 (import하는 파일, 호출하는 파일 등)
 
@@ -190,7 +152,7 @@ while (attempt < maxAttempts) {
 - **modified**: 수정된 버전으로 교체
 - **rejected**: 목록에서 제거
 
-### 7.6. 자체 수정 (메타리뷰 피드백 반영)
+### 5.6. 자체 수정 (메타리뷰 피드백 반영)
 
 메타리뷰에서 수정/제외 판정을 받은 항목을 자동으로 수정:
 
@@ -200,9 +162,9 @@ while (attempt < maxAttempts) {
    - 근거 보강 또는 맥락에 맞게 재작성
    - 또는 목록에서 제거
 
-수정 완료 후 7.5 메타리뷰로 복귀 (루프)
+수정 완료 후 5.5 메타리뷰로 복귀 (루프)
 
-### 8. 자동 제출
+### 6. 자동 제출
 
 메타리뷰에서 모든 항목이 통과한 경우:
 
@@ -252,7 +214,7 @@ gh api repos/{owner}/{repo}/pulls/{pr번호}/reviews \
   -X POST -f event="APPROVE" -f body="LGTM 🎉"
 ```
 
-### 8b. 사용자 개입 요청 (최대 반복 도달 시)
+### 6b. 사용자 개입 요청 (최대 반복 도달 시)
 
 10회 시도 후에도 통과하지 못한 경우:
 
