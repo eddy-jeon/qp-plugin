@@ -1,6 +1,6 @@
 {
   "name": "friday",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "PR 코드 리뷰 비서 - FE 영역 리뷰, 메타리뷰 품질 검증, PR 코멘트 자동 게시",
   "author": {
     "name": "Eddy Jeon"
