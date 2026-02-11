@@ -19,10 +19,39 @@ arguments:
 ### 1. PR 정보 획득
 
 ```bash
-gh pr view {pr} --json number,title,body,headRefName,baseRefName
+gh pr view {pr} --json number,title,body,headRefName,baseRefName,labels
 ```
 
-PR 번호, 제목, 본문, head/base 브랜치 정보를 확인합니다.
+PR 번호, 제목, 본문, head/base 브랜치 정보, 라벨을 확인합니다.
+
+### 1.5. 리뷰 대상 확인 (조기 종료 체크)
+
+FE 리뷰 대상 여부를 확인합니다. **다음 조건 중 하나라도 만족하면 리뷰를 진행**합니다:
+
+1. **FE 변경 파일 존재**: `apps/front/` 하위 파일이 변경됨
+2. **FE 라벨 존재**: PR에 `apps/front` 라벨이 있음
+
+```bash
+# FE 변경 파일 확인
+gh pr diff {pr} --name-only | grep "^apps/front/"
+
+# PR 라벨 확인 (1단계에서 획득한 labels 사용)
+# labels 배열에 "apps/front" 포함 여부 확인
+```
+
+**조기 종료 조건**: FE 변경 파일도 없고, `apps/front` 라벨도 없는 경우
+
+```markdown
+## ℹ️ FE 리뷰 대상 아님
+
+이 PR은 FE 리뷰 대상이 아닙니다:
+- `apps/front/` 변경 파일: 없음
+- `apps/front` 라벨: 없음
+
+FE 리뷰가 필요하면 PR에 `apps/front` 라벨을 추가해주세요.
+```
+
+조기 종료 시 브랜치 이동 없이 바로 종료합니다.
 
 ### 2. PR 브랜치로 이동
 
@@ -48,7 +77,10 @@ git checkout {headRefName}
 gh pr diff {pr} --name-only
 ```
 
-출력에서 `apps/front/` 하위 파일만 필터링합니다. FE 변경 파일이 없으면 사용자에게 알리고 종료합니다.
+출력에서 `apps/front/` 하위 파일만 필터링합니다.
+
+> ℹ️ 1.5단계에서 리뷰 대상 여부를 이미 확인했으므로, 여기서는 파일 목록만 추출합니다.
+> `apps/front` 라벨이 있지만 FE 변경 파일이 없는 경우, 라벨 기반 리뷰임을 인지하고 진행합니다.
 
 ### 4. frontend-doc 스킬 로드
 
