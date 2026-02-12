@@ -19,14 +19,78 @@ arguments:
 ### 1. PR 정보 획득
 
 ```bash
-gh pr view {pr} --json number,title,body,headRefName,baseRefName,labels
+gh pr view {pr} --json number,title,body,headRefName,baseRefName,labels,state,isDraft,reviews,reviewRequests
 ```
 
-PR 번호, 제목, 본문, head/base 브랜치 정보, 라벨을 확인합니다.
+PR 번호, 제목, 본문, head/base 브랜치 정보, 라벨, 상태, 드래프트 여부, 리뷰 정보를 확인합니다.
 
 ### 1.5. 리뷰 대상 확인 (조기 종료 체크)
 
-FE 리뷰 대상 여부를 확인합니다. **다음 조건 중 하나라도 만족하면 리뷰를 진행**합니다:
+다음 조건을 **순서대로** 체크하여 조기 종료 여부를 결정합니다:
+
+| # | 조건 | 메시지 |
+|---|------|--------|
+| 1 | PR이 OPEN 상태가 아님 | "이 PR은 이미 {Merged/Closed} 상태입니다" |
+| 2 | Draft PR임 | "이 PR은 아직 Draft 상태입니다" |
+| 3 | 내가 리뷰할 필요 없음 | "이미 리뷰를 완료했고 재요청이 없습니다" |
+| 4 | FE 변경 없고 라벨 없음 | "FE 리뷰 대상이 아닙니다" |
+
+#### 조건 1: PR 상태 확인
+
+1단계에서 획득한 `state` 필드 확인:
+- `OPEN`: 리뷰 진행
+- `MERGED` 또는 `CLOSED`: 조기 종료
+
+```markdown
+## ℹ️ 리뷰 불가
+
+이 PR은 이미 **{Merged/Closed}** 상태입니다.
+```
+
+#### 조건 2: Draft 여부 확인
+
+1단계에서 획득한 `isDraft` 필드 확인:
+- `false`: 리뷰 진행
+- `true`: 조기 종료
+
+```markdown
+## ℹ️ 리뷰 대상 아님
+
+이 PR은 아직 **Draft** 상태입니다.
+Ready for review로 변경되면 다시 요청해주세요.
+```
+
+#### 조건 3: 리뷰 필요 여부 확인
+
+1단계에서 획득한 `reviews`와 `reviewRequests` 필드로 확인:
+
+```bash
+# 내 GitHub 사용자명 획득
+gh api user --jq '.login'
+```
+
+**리뷰 필요 여부 로직**:
+- `내가 리뷰함` = reviews에서 내 login이 있는지
+- `내가 요청받음` = reviewRequests에서 내 login이 있는지
+
+```
+리뷰 진행 조건: (내가 리뷰 안함) OR (내가 요청받음)
+→ $reviewed == 0 or $requested > 0
+
+조기 종료 조건: (내가 이미 리뷰함) AND (요청 없음)
+→ $reviewed > 0 and $requested == 0
+```
+
+```markdown
+## ℹ️ 리뷰 대상 아님
+
+이미 리뷰를 완료했고, 재리뷰 요청이 없습니다.
+추가 리뷰가 필요하면 PR에서 re-request review 해주세요.
+```
+
+#### 조건 4: FE 변경 여부 확인
+
+**다음 조건 중 하나라도 만족하면 리뷰를 진행**합니다:
 
 1. **FE 변경 파일 존재**: `apps/front/` 하위 파일이 변경됨
 2. **FE 라벨 존재**: PR에 `apps/front` 라벨이 있음
@@ -51,7 +115,9 @@ gh pr diff {pr} --name-only | grep "^apps/front/"
 FE 리뷰가 필요하면 PR에 `apps/front` 라벨을 추가해주세요.
 ```
 
-조기 종료 시 브랜치 이동 없이 바로 종료합니다.
+---
+
+**조기 종료 시 브랜치 이동 없이 바로 종료합니다.**
 
 ### 2. PR 브랜치로 이동
 
