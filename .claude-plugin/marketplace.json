@@ -24,8 +24,8 @@
     {
       "name": "friday",
       "source": "./plugins/friday",
-      "description": "PR 코드 리뷰 비서 - FE 영역 리뷰, 메타리뷰 품질 검증, PR 코멘트 자동 게시",
-      "version": "1.2.5"
+      "description": "FE 코드 워크플로우 비서 - PR 리뷰, 코드 품질 개선, Jira 기반 자동화 구현",
+      "version": "2.0.0"
     },
     {
       "name": "workday-prep",
@@ -37,18 +37,6 @@
       "source": "./plugins/monday",
       "description": "미팅 회의록에서 업무 인사이트를 추출하는 플러그인",
       "version": "1.0.0"
-    },
-    {
-      "name": "sunday",
-      "source": "./plugins/sunday",
-      "description": "Jira 티켓 기반 완전 자동화 개발 워크플로우 - 요구사항 분석부터 PR 오픈까지",
-      "version": "1.1.0"
-    },
-    {
-      "name": "saturday",
-      "source": "./plugins/saturday",
-      "description": "코드 리뷰 기반 코드 품질 개선 워크플로우 - 기존 브랜치 개선 또는 새 브랜치 구현",
-      "version": "1.1.0"
     }
   ]
 }

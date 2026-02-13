@@ -1,5 +1,5 @@
 ---
-name: sunday:start
+name: friday:jira
 description: Jira 티켓 기반 완전 자동화 워크플로우를 시작합니다. 요구사항 분석부터 PR 오픈까지 자동으로 진행합니다.
 arguments:
   - name: ticket
@@ -10,7 +10,7 @@ arguments:
     required: false
 ---
 
-# Sunday: 완전 자동화 개발 워크플로우
+# /friday:jira - 완전 자동화 개발 워크플로우
 
 Jira 티켓 `{ticket}`에 대한 자동화 워크플로우를 시작합니다.
 
@@ -35,7 +35,7 @@ Jira 티켓 `{ticket}`에 대한 자동화 워크플로우를 시작합니다.
 which jira
 ```
 
-jira CLI가 없으면 사용자에게 `/sunday:setup` 실행을 안내하고 종료합니다.
+jira CLI가 없으면 사용자에게 `/friday:setup` 실행을 안내하고 종료합니다.
 
 ### 1.2 티켓 조회
 
@@ -339,7 +339,7 @@ gh pr create --title "[{ticket}] {TICKET_TITLE}" --body "$(cat <<'EOF'
 
 ---
 
-🤖 Generated with [Sunday](https://github.com/anthropics/claude-code) — Automated Development Workflow
+🤖 Generated with [Friday](https://github.com/anthropics/claude-code) — Automated Development Workflow
 EOF
 )"
 ```
@@ -365,7 +365,7 @@ jira issue comment add {ticket} -b "$(cat <<'EOF'
 **요구사항 충족도**: {spec_review_score}
 
 ---
-_Sunday 자동화 워크플로우로 생성됨_
+_Friday 자동화 워크플로우로 생성됨_
 EOF
 )"
 ```
@@ -417,4 +417,4 @@ frontend-doc이 없는 경우:
 2. **Frontend 전용**: `apps/front` 디렉토리 대상
 3. **frontend-doc 우선**: 프로젝트 문서화된 규칙이 일반 품질보다 우선
 4. **80점 게이트**: 코드 리뷰, 요구사항 리뷰 모두 80점 이상 필요
-5. **Jira CLI 필수**: 사전에 `/sunday:setup` 으로 설정 필요
+5. **Jira CLI 필수**: 사전에 `/friday:setup` 으로 설정 필요

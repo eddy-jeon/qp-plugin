@@ -1,9 +1,9 @@
 {
   "name": "friday",
-  "version": "1.2.5",
-  "description": "PR 코드 리뷰 비서 - FE 영역 리뷰, 메타리뷰 품질 검증, PR 코멘트 자동 게시",
+  "version": "2.0.0",
+  "description": "FE 코드 워크플로우 비서 - PR 리뷰, 코드 품질 개선, Jira 기반 자동화 구현",
   "author": {
     "name": "Eddy Jeon"
   },
-  "keywords": ["code-review", "pr", "frontend", "github"]
+  "keywords": ["code-review", "pr", "frontend", "github", "jira", "automation"]
 }

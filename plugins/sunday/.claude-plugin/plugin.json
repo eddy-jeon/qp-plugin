@@ -1,9 +1,0 @@
-{
-  "name": "sunday",
-  "version": "1.1.0",
-  "description": "Jira 티켓 기반 완전 자동화 개발 워크플로우 - 요구사항 분석부터 PR 오픈까지",
-  "author": {
-    "name": "eddy-jeon"
-  },
-  "keywords": ["jira", "workflow", "code-review", "automation", "frontend"]
-}

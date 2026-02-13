@@ -1,5 +1,5 @@
 ---
-name: saturday:improve
+name: friday:improve
 description: 기존 브랜치의 코드를 리뷰하고 80점 이상 통과할 때까지 개선합니다.
 arguments:
   - name: branch
@@ -10,7 +10,7 @@ arguments:
     required: false
 ---
 
-# /saturday:improve - 기존 브랜치 개선
+# /friday:improve - 기존 브랜치 개선
 
 기존 브랜치의 변경사항을 코드 리뷰하고, **80점 이상 통과할 때까지** 자동으로 개선합니다.
 
@@ -137,20 +137,20 @@ git commit -m "fix: code review 피드백 반영
 ### 기본 사용 (현재 브랜치, develop의 가이드 참조)
 
 ```
-/saturday:improve
+/friday:improve
 ```
 
 ### 특정 브랜치 지정
 
 ```
-/saturday:improve feature/user-profile
+/friday:improve feature/user-profile
 ```
 
 ### 다른 브랜치의 가이드 참조
 
 ```
-/saturday:improve --guide-branch main
-/saturday:improve feature/user-profile --guide-branch main
+/friday:improve --guide-branch main
+/friday:improve feature/user-profile --guide-branch main
 ```
 
 ## 주의 사항

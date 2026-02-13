@@ -1,11 +1,11 @@
 ---
-name: sunday:setup
+name: friday:setup
 description: Jira CLI 환경 설정 가이드. jira-cli 설치 및 로그인 설정을 진행합니다.
 ---
 
 # Jira CLI 환경 설정
 
-Sunday 플러그인 사용을 위한 Jira CLI 설정을 진행합니다.
+Friday 플러그인의 Jira 연동을 위한 CLI 설정을 진행합니다.
 
 ## 1. Jira CLI 설치 확인
 
@@ -76,4 +76,4 @@ Jira에서 해당 프로젝트에 대한 접근 권한이 있는지 확인하세
 
 ## 완료
 
-설정이 완료되었습니다. 이제 `/sunday:start {JIRA-123}` 명령어로 자동화 워크플로우를 시작할 수 있습니다.
+설정이 완료되었습니다. 이제 `/friday:jira {JIRA-123}` 명령어로 자동화 워크플로우를 시작할 수 있습니다.

@@ -1,5 +1,5 @@
 ---
-name: saturday:implement
+name: friday:implement
 description: 새 브랜치에서 요구사항 기반 코드를 구현하고 80점 이상 통과할 때까지 개선합니다.
 arguments:
   - name: requirement
@@ -10,7 +10,7 @@ arguments:
     required: false
 ---
 
-# /saturday:implement - 새 브랜치 구현
+# /friday:implement - 새 브랜치 구현
 
 요구사항을 받아 새 브랜치에서 코드를 구현하고, **80점 이상 통과할 때까지** 코드 리뷰와 수정을 반복합니다.
 
@@ -172,13 +172,13 @@ git commit -m "fix: code review 피드백 반영
 ### 인자로 요구사항 전달 (develop의 가이드 참조)
 
 ```
-/saturday:implement "버튼 클릭 시 모달 표시"
+/friday:implement "버튼 클릭 시 모달 표시"
 ```
 
 ### 대화형 입력
 
 ```
-/saturday:implement
+/friday:implement
 > 구현할 요구사항을 입력해주세요:
 사용자 프로필 페이지에 아바타 업로드 기능 추가
 ```
@@ -186,7 +186,7 @@ git commit -m "fix: code review 피드백 반영
 ### 다른 브랜치의 가이드 참조
 
 ```
-/saturday:implement "버튼 클릭 시 모달 표시" --guide-branch main
+/friday:implement "버튼 클릭 시 모달 표시" --guide-branch main
 ```
 
 ## 주의 사항
