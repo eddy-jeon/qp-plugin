@@ -1,7 +1,7 @@
 ---
 name: planner
 description: Jira 티켓을 분석하여 작업 계획을 수립합니다. frontend-doc 스킬을 활용하여 프로젝트 구조와 규칙을 파악합니다.
-model: sonnet
+model: opus
 ---
 
 # Planner Agent
