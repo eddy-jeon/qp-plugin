@@ -18,6 +18,12 @@
 
 기존 PR의 FE 변경사항을 리뷰합니다. 메타리뷰 통과 시 자동으로 PR 코멘트 게시.
 
+**자연어 요청도 가능**:
+```
+"friday의 review 스킬로 PR 123 리뷰해줘"
+"PR 456 FE 리뷰해줘"
+```
+
 ### 리뷰 수동 제출
 
 ```bash
@@ -82,13 +88,13 @@ Jira 연동을 위한 CLI 설정 가이드.
 
 ### Agents
 
-| 에이전트 | 설명 |
-|----------|------|
-| `meta-reviewer` | 리뷰 결과 품질 검증 (메타리뷰) |
-| `review-formatter` | 리뷰 결과 마크다운 포맷터 |
-| `code-reviewer` | 코드 품질 리뷰 (frontend-doc 기준) |
-| `spec-reviewer` | 요구사항 충족도 평가 |
-| `planner` | Jira 티켓 분석 및 작업 계획 수립 |
+| 에이전트 | 모델 | 설명 |
+|----------|------|------|
+| `meta-reviewer` | sonnet | 리뷰 결과 품질 검증 (메타리뷰) |
+| `review-formatter` | haiku | 리뷰 결과 마크다운 포맷터 |
+| `code-reviewer` | sonnet | 코드 품질 리뷰 (frontend-doc 기준) |
+| `spec-reviewer` | sonnet | 요구사항 충족도 평가 |
+| `planner` | **opus** | Jira 티켓 분석 및 작업 계획 수립 |
 
 ### Skills
 
