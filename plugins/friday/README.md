@@ -65,6 +65,15 @@ Jira 티켓 기반 **완전 자동화** 워크플로우:
 4. 요구사항 리뷰 (80점 게이트)
 5. PR 생성 & Jira 코멘트
 
+### 테스트 코드 점진적 작성
+
+```bash
+/friday:write-test
+/friday:write-test --guide-branch main
+```
+
+프로젝트의 테스트 코드를 **한 파일씩** 점진적으로 작성합니다. 진행 상황을 `~/.claude/friday/test-progress/`에 추적하여 세션 간 이어서 작업 가능.
+
 ### Jira CLI 설정
 
 ```bash
@@ -83,6 +92,7 @@ Jira 연동을 위한 CLI 설정 가이드.
 | `submit-review` | 리뷰 결과 PR 코멘트 게시 |
 | `improve` | 기존 브랜치 코드 개선 |
 | `implement` | 요구사항 기반 새 코드 구현 |
+| `write-test` | 테스트 코드 점진적 작성 |
 | `jira` | Jira 티켓 기반 자동화 |
 | `setup` | Jira CLI 설정 |
 
@@ -112,6 +122,7 @@ Jira 연동을 위한 CLI 설정 가이드.
 | `review-pr` | 기존 PR | PR 코멘트 | 메타리뷰 → 자동 게시 |
 | `improve` | 내 브랜치 | 코드 수정 | 80점까지 자동 수정 |
 | `implement` | 새 브랜치 | 코드 구현 | 80점까지 자동 수정 |
+| `write-test` | 소스 파일 | 테스트 파일 | 한 파일씩 점진 작성 |
 | `jira` | Jira 티켓 | PR 생성 | 완전 자동화 |
 
 ## 주요 특징
