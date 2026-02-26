@@ -25,7 +25,7 @@
       "name": "friday",
       "source": "./plugins/friday",
       "description": "개발 업무 비서 - PR 리뷰, 코드 품질 개선, 테스트 작성, Jira 자동화, PR 캐치업 등 개발 워크플로우 전반 지원",
-      "version": "2.2.0"
+      "version": "2.2.1"
     },
     {
       "name": "workday-prep",
