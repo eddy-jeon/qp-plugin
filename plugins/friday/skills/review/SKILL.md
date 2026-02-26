@@ -1,5 +1,5 @@
 ---
-name: review
+name: friday:review
 description: PR의 FE 영역을 리뷰합니다. /friday:review-pr 커맨드를 호출합니다.
 when_to_use: |
   - "PR 리뷰해줘", "PR 123 리뷰해줘"
@@ -24,11 +24,11 @@ Args: {PR 번호} [--guide-branch {브랜치}]
 
 ## 예시
 
-| 사용자 요청 | 호출 |
-|------------|------|
-| "PR 123 리뷰해줘" | `friday:review-pr 123` |
-| "이 PR 리뷰해줘: https://github.com/.../pull/456" | `friday:review-pr 456` |
-| "main 브랜치 가이드로 PR 789 리뷰해줘" | `friday:review-pr 789 --guide-branch main` |
+| 사용자 요청                                       | 호출                                       |
+| ------------------------------------------------- | ------------------------------------------ |
+| "PR 123 리뷰해줘"                                 | `friday:review-pr 123`                     |
+| "이 PR 리뷰해줘: https://github.com/.../pull/456" | `friday:review-pr 456`                     |
+| "main 브랜치 가이드로 PR 789 리뷰해줘"            | `friday:review-pr 789 --guide-branch main` |
 
 ## 주의
 
