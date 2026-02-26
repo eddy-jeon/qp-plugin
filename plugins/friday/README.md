@@ -113,6 +113,7 @@ Jira 연동을 위한 CLI 설정 가이드.
 | `review` | PR FE 코드 리뷰 워크플로우 (자연어 요청 가능) |
 | `fe-review` | 기본 FE 리뷰 가이드 (fallback) |
 | `code-quality` | frontend-doc 기반 코드 품질 평가 기준 |
+| `pr-catchup` | 최근 머지된 PR 분석 및 요약 |
 | `spec-compliance` | 요구사항 충족도 평가 기준 |
 
 ## 워크플로우 비교

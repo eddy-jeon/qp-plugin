@@ -25,7 +25,7 @@
       "name": "friday",
       "source": "./plugins/friday",
       "description": "FE 코드 워크플로우 비서 - PR 리뷰, 코드 품질 개선, Jira 기반 자동화 구현",
-      "version": "2.1.0"
+      "version": "2.2.0"
     },
     {
       "name": "workday-prep",
