@@ -13,13 +13,14 @@
     {
       "name": "session-learner",
       "source": "./plugins/session-learner",
-      "description": "Claude Code 세션에서 학습 내용을 자동으로 추출하여 Git 레포지토리에 저장하는 플러그인",
+      "description": "Claude Code 세션에서 학습 내용을 추출하여 지정된 레포지토리에 저장하는 플러그인",
       "version": "1.0.0"
     },
     {
       "name": "simple-engineering",
       "source": "./plugins/simple-engineering",
-      "description": "AI 협업 시 Simple Engineering 원칙을 적용하는 3단계 워크플로우 플러그인"
+      "description": "AI 협업 시 '쉬움(Easy)'이 아닌 '단순함(Simple)'을 추구하는 워크플로우 플러그인. 컨텍스트 엔지니어링을 통해 축적된 이해(Earned Understanding)를 유지하면서 효과적으로 협업합니다.",
+      "version": "1.0.0"
     },
     {
       "name": "friday",
@@ -30,7 +31,8 @@
     {
       "name": "workday-prep",
       "source": "./plugins/workday-prep",
-      "description": "하루 업무 시작 전 여러 플랫폼(Slack, Google, Jira, GitHub)의 알림을 확인하는 플러그인"
+      "description": "하루 업무 시작 전 여러 플랫폼(Slack, Gmail, Jira, GitHub, Google Calendar)의 알림과 업데이트를 확인하고 인터랙티브하게 처리하는 플러그인",
+      "version": "1.0.0"
     },
     {
       "name": "monday",
